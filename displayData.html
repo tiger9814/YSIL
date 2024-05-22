@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Display for Loan & EMI Details</title>
+
+  <style>
+    /* Common CSS styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: yellow;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+      background-color: black;
+      padding: 20px;
+    }
+
+    /* Table CSS styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid yellow;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: green;
+    }
+
+    th:first-child,
+    td:first-child {
+      width: 5%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 20%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 15%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 15%;
+    }
+
+    th:nth-child(5),
+    td:nth-child(5) {
+      width: 15%;
+    }
+
+    th:nth-child(6),
+    td:nth-child(6) {
+      width: 15%;
+    }
+
+    th:nth-child(7),
+    td:nth-child(7) {
+      width: 15%;
+    }
+    .nav-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nav-buttons a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: black;
+  background-color: yellow;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-buttons a:hover {
+  background-color: black;
+  color: yellow;
+  border-color: yellow;
+}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Loan Management Section -->
+    <div class="nav-buttons">
+  <a href="#">DISPLAY DATA</a>
+    <a href="index.html">DASHBOARD</a>
+    <a href="ledm.html">ADMIN</a>
+    </div>
+    <div class="loan-section">
+      <h4>Loan Management</h4>
+      <table id="loanTable">
+        <!-- Loan Management table -->
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Received By</th>
+            <th>Credit Amount</th>
+            <th>Credit Date</th>
+            <th>Deposit Amount</th>
+            <th>Deposit Date</th>
+          </tr>
+        </thead>
+        <tbody id="loanTableBody">
+          <!-- Data will be displayed here -->
+        </tbody>
+      </table>
+      <div class="totals">
+        <h4>Loan Management Totals</h4>
+        <p id="totalCreditAmount">Total Credit Amount: Rs 0</p>
+        <p id="totalDepositAmount">Total Deposit Amount: Rs 0</p>
+        <p id="profitLoss">Profit/Loss: Rs 0</p>
+      </div>
+    </div>
+
+    <!-- EMI Details Section -->
+    <div class="emi-section">
+      <h4>EMI Details</h4>
+      <table id="emiTable">
+        <!-- EMI Details table -->
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>EMI Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="emiTableBody">
+          <!-- Data will be displayed here -->
+        </tbody>
+      </table>
+      <div class="totals">
+        <h4>EMI Details Totals</h4>
+        <p id="totalEMIAmount">Total EMI Amount: Rs 0</p>
+      </div>
+    </div>
+  </div>
+  
+
+  <script>
+    // JavaScript code for displaying Loan Management data
+    function displayLoanData() {
+      const loanTableBody = document.getElementById("loanTableBody");
+      loanTableBody.innerHTML = ""; // Clear existing table rows
+      let loanData = JSON.parse(localStorage.getItem("loanData")) || [];
+
+      let totalCredit = 0;
+      let totalDeposit = 0;
+
+      loanData.forEach(function (data, index) {
+        const row = loanTableBody.insertRow();
+        row.insertCell(0).textContent = index + 1;
+        row.insertCell(1).textContent = data.name;
+        row.insertCell(2).textContent = data.receivedBy;
+        row.insertCell(3).textContent = "Rs " + data.creditAmount;
+        row.insertCell(4).textContent = data.creditDate;
+        row.insertCell(5).textContent = "Rs " + data.depositAmount;
+        row.insertCell(6).textContent = data.depositDate;
+
+        totalCredit += parseFloat(data.creditAmount);
+        totalDeposit += parseFloat(data.depositAmount);
+      });
+
+      document.getElementById("totalCreditAmount").textContent =
+        "Total Credit Amount: Rs " + totalCredit;
+      document.getElementById("totalDepositAmount").textContent =
+        "Total Deposit Amount: Rs " + totalDeposit;
+      document.getElementById("profitLoss").textContent =
+        "Profit/Loss: Rs " + (totalDeposit - totalCredit);
+    }
+
+    // JavaScript code for displaying EMI Details data
+    function displayEMIData() {
+      const emiTableBody = document.getElementById("emiTableBody");
+      emiTableBody.innerHTML = ""; // Clear existing table rows
+      let emiData = JSON.parse(localStorage.getItem("emiData")) || [];
+
+      let totalEMI = 0;
+
+      emiData.forEach(function (data, index) {
+        const row = emiTableBody.insertRow();
+        row.insertCell(0).textContent = index + 1;
+        row.insertCell(1).textContent = data.name;
+        row.insertCell(2).textContent = "Rs " + data.emiAmount;
+        row.insertCell(3).textContent = data.date;
+
+        totalEMI += parseFloat(data.emiAmount);
+      });
+
+      document.getElementById("totalEMIAmount").textContent =
+        "Total EMI Amount: Rs " + totalEMI;
+    }
+
+    // Initial display of Loan Management and EMI Details data
+    displayLoanData();
+    displayEMIData();
+  </script>
+
+</body>
+
+</html>

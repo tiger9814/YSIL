@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    /* Common CSS styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: yellow;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+      background-color: black;
+      padding: 20px;
+    }
+
+    header {
+      background-color: green;
+      color: yellow;
+      padding: 10px 0;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: yellow;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+
+    .navbar a {
+      color: black;
+      padding: 10px 20px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .navbar a:hover {
+      background-color: black;
+      color: yellow;
+    }
+
+    .section {
+      background-color: green;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    h4 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: yellow;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 200px;
+      height: auto;
+    }
+
+    /* New CSS for member cards */
+    .member-card {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 10px;
+      text-align:center;
+    }
+
+    .member-card img {
+      max-width: 100px;
+      height: auto;
+      text-align: center;
+    }
+
+    .member-card p {
+      color: yellow;
+      text-align: center;
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="#">Dashboard</a>
+    <a href="displayData.html">DISPLAY DATA</a>
+    <a href="ledm.html">ADMIN</a>
+  </div>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <h2>YUWA SOCIETY IMPROVEMENT LOHARPATTI</h2>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h4>Welcome to the Dashboard!</h4>
+      <p>This is the dashboard of YUWA SOCIETY IMPROVEMENT LOHARPATTI. You can perform various actions from here.</p>
+
+      <!-- Member cards -->
+      <div class="member-card">
+        <!-- Member 1 -->
+        <div>
+          <img src="logo.png" alt="Member Image">
+          <p>Mohammad Ali</p>
+        </div>
+
+        <!-- Member 2 -->
+        <div>
+          <img src="MohammadAli.jpg" alt="Member Image">
+          <p>Mohammad Ali</p>
+        </div>
+
+        <!-- Add more member cards as needed -->
+        <!-- Member 3 -->
+        <!-- <div>
+          <img src="random_image_3.jpg" alt="Member Image">
+          <p>Member Name</p>
+        </div> -->
+
+        <!-- Member 4 -->
+        <!-- <div>
+          <img src="random_image_4.jpg" alt="Member Image">
+          <p>Member Name</p>
+        </div> -->
+
+        <!-- Add more member cards as needed -->
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

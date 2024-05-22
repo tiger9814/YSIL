@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Loan & EMI Details Management</title>
+
+  <style>
+    /* Common CSS styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: yellow;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+      background-color: black;
+      padding: 20px;
+    }
+
+    /* Loan Management CSS styles */
+    .loan-section,
+    .emi-section {
+      margin-bottom: 40px;
+      background-color: green;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .loan-section h4,
+    .emi-section h4 {
+      text-align: center;
+      color: yellow;
+      margin-bottom: 20px;
+    }
+
+    .loan-section label,
+    .emi-section label {
+      display: block;
+      margin-bottom: 5px;
+      color: yellow;
+    }
+
+    .loan-section input,
+    .emi-section input {
+      width: 100%;
+      height: 30px;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid yellow;
+    }
+
+    .loan-section .btn,
+    .emi-section .btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 20px;
+      background-color: yellow;
+      color: black;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Table CSS styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid yellow;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: green;
+    }
+
+    th:first-child,
+    td:first-child {
+      width: 5%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 20%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 15%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 15%;
+    }
+
+    th:nth-child(5),
+    td:nth-child(5) {
+      width: 15%;
+    }
+
+    th:nth-child(6),
+    td:nth-child(6) {
+      width: 15%;
+    }
+
+    th:nth-child(7),
+    td:nth-child(7) {
+      width: 10%;
+    }
+    .nav-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nav-buttons a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: black;
+  background-color: yellow;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-buttons a:hover {
+  background-color: black;
+  color: yellow;
+  border-color: yellow;
+}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Loan Management Section -->
+<div class="nav-buttons">
+  <a href="#">ADMIN</a>
+  <a href="displayData.html">DISPLAY DATA</a>
+  <a href="index.html">DASHBOARD</a>
+</div>
+    <div class="loan-section">
+
+      <div class="totals">
+        <h4>Loan Management Totals</h4>
+        <p id="totalCreditAmount">Total Credit Amount: Rs 0</p>
+        <p id="totalDepositAmount">Total Deposit Amount: Rs 0</p>
+        <p id="profitLoss">Profit/Loss: Rs 0</p>
+      </div>
+
+      <h4>Loan Management</h4>
+      <form id="loanForm">
+        <label for="uname">Name:</label>
+        <input type="text" id="uname" name="uname" required>
+        <label for="receivedBy">Received By:</label>
+        <input type="text" id="receivedBy" name="receivedBy" required>
+        <label for="creditAmount">Credit Amount:</label>
+        <input type="number" id="creditAmount" name="creditAmount" required>
+        <label for="creditDate">Credit Date:</label>
+        <input type="date" id="creditDate" name="creditDate" required>
+        <label for="depositAmount">Deposit Amount:</label>
+        <input type="number" id="depositAmount" name="depositAmount">
+        <label for="depositDate">Deposit Date:</label>
+        <input type="date" id="depositDate" name="depositDate">
+        <button type="submit" class="btn">Save</button>
+      </form>
+
+      <div class="header">
+        <h4>Yuwa Society Improvement Loharpatti - Loan Management</h4>
+      </div>
+
+      <table id="loanTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Received By</th>
+            <th>Credit Amount</th>
+            <th>Credit Date</th>
+            <th>Deposit Amount</th>
+            <th>Deposit Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- EMI Details Section -->
+    <div class="emi-section">
+      <div class="totals">
+        <h4>EMI Details Totals</h4>
+        <p id="totalEMIAmount">Total EMI Amount: Rs 0</p>
+      </div>
+      <h4>EMI Details</h4>
+      <form id="emiForm">
+        <label for="emiName">Name:</label>
+        <input type="text" id="emiName" name="emiName" required>
+        <label for="emiAmount">EMI:</label>
+        <input type="number" id="emiAmount" name="emiAmount" required>
+        <label for="emiDate">Date:</label>
+        <input type="date" id="emiDate" name="emiDate" required>
+        <button type="submit" class="btn">Save</button>
+      </form>
+
+      <div class="header">
+        <h4>Yuwa Society Improvement Loharpatti - EMI Details</h4>
+      </div>
+
+      <table id="emiTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>EMI Amount</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  
+  <script>
+    // JavaScript code for Loan Management
+    const loanForm = document.getElementById("loanForm");
+    const loanTable = document.getElementById("loanTable").querySelector("tbody");
+
+    loanForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const name = document.getElementById("uname").value;
+      const receivedBy = document.getElementById("receivedBy").value;
+      const creditAmount = document.getElementById("creditAmount").value;
+      const creditDate = document.getElementById("creditDate").value;
+      const depositAmount = document.getElementById("depositAmount").value || 0;
+      const depositDate = document.getElementById("depositDate").value || '';
+
+      // Storing loan data in localStorage
+      let loanData = JSON.parse(localStorage.getItem("loanData")) || [];
+      loanData.push({
+        name: name,
+        receivedBy: receivedBy,
+        creditAmount: creditAmount,
+        creditDate: creditDate,
+        depositAmount: depositAmount,
+        depositDate: depositDate
+      });
+      localStorage.setItem("loanData", JSON.stringify(loanData));
+
+      displayLoanData();
+      loanForm.reset();
+    });
+
+    function displayLoanData() {
+      loanTable.innerHTML = ""; // Clear existing table rows
+      let loanData = JSON.parse(localStorage.getItem("loanData")) || [];
+
+      let totalCredit = 0;
+      let totalDeposit = 0;
+
+      loanData.forEach(function(data, index) {
+        const row = loanTable.insertRow();
+        row.insertCell(0).textContent = index + 1;
+        row.insertCell(1).textContent = data.name;
+        row.insertCell(2).textContent = data.receivedBy;
+        row.insertCell(3).textContent = "Rs " + data.creditAmount;
+        row.insertCell(4).textContent = data.creditDate;
+        row.insertCell(5).textContent = "Rs " + data.depositAmount;
+        row.insertCell(6).textContent = data.depositDate;
+        row.insertCell(7).innerHTML = '<button class="editBtn" onclick="editLoan(' + index + ')">Edit</button>';
+
+        totalCredit += parseFloat(data.creditAmount);
+        totalDeposit += parseFloat(data.depositAmount);
+      });
+
+      document.getElementById("totalCreditAmount").textContent = "Total Credit Amount: Rs " + totalCredit;
+      document.getElementById("totalDepositAmount").textContent= "Total Deposit Amount: Rs " + totalDeposit;
+      document.getElementById("profitLoss").textContent = "Profit/Loss: Rs " + (totalDeposit - totalCredit);
+    }
+
+    // Initial display of Loan Management data
+    displayLoanData();
+
+    // JavaScript code for EMI Details
+    const emiForm = document.getElementById("emiForm");
+    const emiTable = document.getElementById("emiTable").querySelector("tbody");
+
+    emiForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const emiName = document.getElementById("emiName").value;
+      const emiAmount = document.getElementById("emiAmount").value;
+      const emiDate = document.getElementById("emiDate").value;
+
+      // Storing EMI data in localStorage
+      let emiData = JSON.parse(localStorage.getItem("emiData")) || [];
+      emiData.push({
+        name: emiName,
+        emiAmount: emiAmount,
+        date: emiDate
+      });
+      localStorage.setItem("emiData", JSON.stringify(emiData));
+
+      displayEMIData();
+      emiForm.reset();
+    });
+
+    function displayEMIData() {
+      emiTable.innerHTML = ""; // Clear existing table rows
+      let emiData = JSON.parse(localStorage.getItem("emiData")) || [];
+
+      let totalEMI = 0;
+
+      emiData.forEach(function(data, index) {
+        const row = emiTable.insertRow();
+        row.insertCell(0).textContent = index + 1;
+        row.insertCell(1).textContent = data.name;
+        row.insertCell(2).textContent = "Rs " + data.emiAmount;
+        row.insertCell(3).textContent = data.date;
+        row.insertCell(4).innerHTML = '<button class="editBtn" onclick="editEMI(' + index + ')">Edit</button>';
+
+        totalEMI += parseFloat(data.emiAmount);
+      });
+
+      document.getElementById("totalEMIAmount").textContent = "Total EMI Amount: Rs " + totalEMI;
+    }
+
+    // Initial display of EMI Details data
+    displayEMIData();
+
+    // Loan Management edit function
+    function editLoan(index) {
+      let loanData = JSON.parse(localStorage.getItem("loanData")) || [];
+      const data = loanData[index];
+
+      // Populate form fields with data for editing
+      document.getElementById("uname").value = data.name;
+      document.getElementById("receivedBy").value = data.receivedBy;
+      document.getElementById("creditAmount").value = data.creditAmount;
+      document.getElementById("creditDate").value = data.creditDate;
+      document.getElementById("depositAmount").value = data.depositAmount;
+      document.getElementById("depositDate").value = data.depositDate;
+
+      // Remove the edited entry from localStorage
+      loanData.splice(index, 1);
+      localStorage.setItem("loanData", JSON.stringify(loanData));
+
+      // Refresh the table display
+      displayLoanData();
+    }
+
+    // EMI Details edit function
+    function editEMI(index) {
+      let emiData = JSON.parse(localStorage.getItem("emiData")) || [];
+      const data = emiData[index];
+
+      // Populate form fields with data for editing
+      document.getElementById("emiName").value = data.name;
+      document.getElementById("emiAmount").value = data.emiAmount;
+      document.getElementById("emiDate").value = data.date;
+
+      // Remove the edited entry from localStorage
+      emiData.splice(index, 1);
+      localStorage.setItem("emiData", JSON.stringify(emiData));
+
+      // Refresh the table display
+      displayEMIData();
+    }
+
+  </script>
+
+</body>
+
+</html>
